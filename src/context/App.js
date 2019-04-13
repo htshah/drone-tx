@@ -6,9 +6,24 @@ const AppProvider = props => {
   const [isLandscape, setIsLandscape] = useState(
     window.matchMedia("(orientation: landscape)").matches
   );
+
+  const [stickPosition, setStickPosition] = useState({
+    yaw: 0,
+    pitch: 0,
+    roll: 0,
+    throttle: 1000
+  });
+
   return (
     <Context.Provider
-      value={{ isLandscape, setIsLandscape: flag => setIsLandscape(flag) }}
+      value={{
+        isLandscape,
+        setIsLandscape: flag => setIsLandscape(flag),
+        stickPosition,
+        setStickPosition: position => {
+          setStickPosition(position);
+        }
+      }}
     >
       {props.children}
     </Context.Provider>
