@@ -2,40 +2,151 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no"
     />
-    <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta name="application-name" content="DroneTx" />
+    <meta name="description" content="A Wifi-based Remote Control for Drone" />
+    <meta name="keywords" content="drone,rc,remote-control,quadcopter" />
+    <meta name="author" content="Het Shah" />
+    <meta name="theme-color" content="#FFFFFF" />
+
+    <link rel="shortcut icon" href="/images/icons/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/icons/favicon-16x16.png"
+    />
+
+    <!-- PWA configs - https://realfavicongenerator.net/ -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Android Configs -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/icons/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/images/icons/android-chrome-512x512.png"
+    />
+
+    <!-- Apple Configs - https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html  -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="mask-icon"
+      href="/images/icons/safari-pinned-tab.svg"
+      color="#f17964"
+    />
+
+    <meta name="apple-mobile-web-app-title" content="DroneTx" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- iOS Splash Screens - https://appsco.pe/developer/splash-screens -->
+    <link
+      href="/images/splashscreens/iphone5_splash.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/iphone6_splash.png"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/iphoneplus_splash.png"
+      media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/iphonex_splash.png"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/iphonexr_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/iphonexsmax_splash.png"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/ipad_splash.png"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/ipadpro1_splash.png"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/ipadpro3_splash.png"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+    <link
+      href="/images/splashscreens/ipadpro2_splash.png"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image"
+    />
+
+    <!-- Microsoft Configs -->
+    <meta name="msapplication-TileColor" content="#f17964" />
+    <meta
+      name="msapplication-config"
+      content="/images/icons/browserconfig.xml"
+    />
+
+    <!-- Twitter Configs -->
+    <meta name="twitter:title" content="DroneTx" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:description"
+      content="DroneTx - Wifi Remote Controller for drone"
+    />
+    <meta name="twitter:image:src" content="/images/logo.png" />
+    <!-- <meta name="twitter:site" content="@{{ site.twitter }}"> -->
+    <!-- <meta name="twitter:creator" content="@{{ site.author.twitter }}"> -->
+    <!-- <meta name="twitter:url" content="{{ site.url }}"> -->
+
+    <!-- Facebook Configs  -->
+    <meta property="og:title" content="DroneTx" />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content="{{ site.url }}"> -->
+    <meta property="og:image" content="/images/logo.png" />
+    <meta
+      property="og:description"
+      content="DroneTx - Wifi Remote Controller for drone"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="en_IN" />
+    <meta property="og:site_name" content="DroneTx" />
+    <title>DroneTx</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
