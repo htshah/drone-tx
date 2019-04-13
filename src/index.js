@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 
+import { MuiThemeProvider, Typography } from "@material-ui/core";
+import Theme from "./common/Theme";
+import Router from "./common/Router";
+
+import withAppContext from "./common/AppContextHOC";
+import { useApp } from "./context/App";
+
 const App = () => {
-  return <h1>Hello world</h1>;
+  const { isLandscape, setIsLandscape } = useApp();
+  useEffect(() => {
+    const setOrientation = () => {
+      setIsLandscape(Math.abs(window.orientation) === 90);
+    };
+    window.addEventListener("orientationchange", setOrientation);
+  }, []);
+  return (
+    <MuiThemeProvider theme={Theme}>
+      <Router />
+    </MuiThemeProvider>
+  );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(withAppContext(App), document.getElementById("root"));
