@@ -1,0 +1,58 @@
+{
+  "workbench.settings.editor": "json",
+  "workbench.editor.highlightModifiedTabs": true,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "boundary",
+  "editor.tabSize": 4,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.snippetSuggestions": "top",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [100],
+  "breadcrumbs.enabled": true,
+  "files.autoSave": "off",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.lock": "json",
+    "*.env": "shellscript",
+    "run": "shellscript",
+    "*.dat": "CSV (pipe)",
+    "*.js": "javascriptreact",
+    ".slugignore": "ignore"
+  },
+  "search.showLineNumbers": true,
+  "search.smartCase": true,
+
+  // Language Settings
+  "[html]": {
+    "editor.tabSize": 2
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[yaml]": {
+    "editor.tabSize": 2
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+
+  // Plugin Settings
+  "emmet.excludeLanguages": [],
+  "emmet.syntaxProfiles": {
+    "javascript": "javascriptreact"
+  },
+  "indentRainbow.colors": [
+    "rgba(32,64,32,0.3)",
+    "rgba(64,32,64,0.3)",
+    "rgba(16,48,48,0.3)",
+    "rgba(64,64,16,0.3)"
+  ],
+  "cSpell.userWords": ["netlify", "het", "shah", "droneTx"],
+  "cSpell.words": ["travelmode", "formik"]
+}
