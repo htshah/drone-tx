@@ -3,10 +3,15 @@ import React, { useContext, useState, useRef, useEffect } from "react";
 const Context = React.createContext();
 
 const AppProvider = props => {
+  /* Connection state */
+  const [isConnected, setConnected] = useState(false);
+
+  /* Orientation state */
   const [isLandscape, setIsLandscape] = useState(
     window.matchMedia("(orientation: landscape)").matches
   );
 
+  /* StickPosition state */
   const [stickPosition, setStickPosition] = useState({
     yaw: 0,
     pitch: 0,
@@ -25,13 +30,15 @@ const AppProvider = props => {
       value={{
         isLandscape,
         setIsLandscape: flag => setIsLandscape(flag),
-        stickPosition: stickPosition,
+        stickPosition,
         setStickPosition: position => {
           setStickPosition({
             ...stickPositionRef.current,
             ...position
           });
-        }
+        },
+        isConnected,
+        setConnected
       }}
     >
       {props.children}
