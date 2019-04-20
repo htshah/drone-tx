@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Grid } from "@material-ui/core";
+import { useEffect } from "react";
 import { ColorPalette } from "../../../common/Theme";
+
 const nipplejs = window.nipplejs;
 
 const getNippleSize = () => {
   //Use screen's width if in landscape
   var width = window.innerWidth;
 
-  if (Math.abs(window.orientation) != 90) {
+  if (Math.abs(window.orientation) !== 90) {
     //Use screen's height if in potrait
     width = window.screen.height;
   }

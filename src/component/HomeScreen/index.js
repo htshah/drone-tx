@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Grid } from "@material-ui/core";
 import styled from "styled-components";
 
@@ -13,7 +13,7 @@ const StickContainer = styled.div`
 `;
 
 export default () => {
-  const { stickPosition, setStickPosition } = useApp();
+  const { setStickPosition } = useApp();
 
   return (
     <React.Fragment>
