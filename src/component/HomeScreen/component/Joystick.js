@@ -11,7 +11,7 @@ const getNippleSize = () => {
     //Use screen's height if in potrait
     width = window.screen.height;
   }
-  return width * 0.22;
+  return width * 0.25;
 };
 
 export default ({ containerId, options, onMove, onEnd }) => {
@@ -19,7 +19,7 @@ export default ({ containerId, options, onMove, onEnd }) => {
     const defaultOptions = {
       zone: document.getElementById(containerId),
       mode: "static",
-      color: ColorPalette.main.primary,
+      color: ColorPalette.main.secondary,
       position: { left: "50%", top: "50%" },
       size: getNippleSize(),
       shape: "square"

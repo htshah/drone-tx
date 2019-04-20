@@ -10,4 +10,7 @@ export default createGlobalStyle`
         width: 100vw;
         height: ${window.innerHeight}px;
     }
+    body{
+        position:fixed;
+    }
 `;
