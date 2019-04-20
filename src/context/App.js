@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 
 const Context = React.createContext();
 
@@ -14,14 +14,23 @@ const AppProvider = props => {
     throttle: 1000
   });
 
+  let stickPositionRef = useRef(stickPosition);
+
+  useEffect(() => {
+    stickPositionRef.current = stickPosition;
+  });
+
   return (
     <Context.Provider
       value={{
         isLandscape,
         setIsLandscape: flag => setIsLandscape(flag),
-        stickPosition,
+        stickPosition: stickPosition,
         setStickPosition: position => {
-          setStickPosition(position);
+          setStickPosition({
+            ...stickPositionRef.current,
+            ...position
+          });
         }
       }}
     >
