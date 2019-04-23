@@ -1,50 +1,44 @@
-import React from "react";
+import React, { useCallback, memo } from "react";
 import { Grid, Button } from "@material-ui/core";
-import styled from "styled-components";
 
-import Joystick from "./component/Joystick";
 import { useApp } from "../../context/App";
+import JoystickContainer from "./component/JoystickContainer";
 
-const StickContainer = styled.div`
-  position: relative;
-  width: 50%;
-  height: 100%;
-  float: left;
-`;
-
-const JoyStickContainer = () => {
-  const { setStickPosition } = useApp();
-
-  return (
-    <div style={{ width: "100%", height: "40%" }}>
-      {/* Left Stick */}
-      <StickContainer id="left-stick" />
-      <Joystick
-        containerId="left-stick"
-        options={{ resetY: false }}
-        onMove={({ x, y }) => {
-          setStickPosition({ throttle: -y, yaw: x });
-        }}
-        onEnd={() => setStickPosition({ yaw: 0 })}
-      />
-
-      {/* Right Stick */}
-      <StickContainer id="right-stick" />
-      <Joystick
-        containerId="right-stick"
-        onMove={({ x, y }) => setStickPosition({ pitch: -y, roll: x })}
-        onEnd={() => setStickPosition({ pitch: 0, roll: 0 })}
-      />
-    </div>
-  );
-};
-
-export default () => {
-  const { isConnected, setConnected } = useApp();
+const HomeScreen = () => {
+  const {
+    isConnected,
+    setConnected,
+    stickPosition: { yaw, pitch, roll, throttle },
+    setStickPosition
+  } = useApp();
 
   const handleConnection = () => {
+    // alert(isConnected ? "Disconnecting" : "Connecting");
     setConnected(!isConnected);
   };
+
+  const onLeftStickMove = ({ x, y }) => {
+    if (throttle !== -y || yaw !== x) {
+      setStickPosition({ throttle: -y, yaw: x });
+    }
+  };
+  const onLeftStickEnd = () => {
+    if (yaw !== 0) {
+      setStickPosition({ yaw: 0 });
+    }
+  };
+
+  const onRightStickMove = ({ x, y }) => {
+    if (pitch !== -y || roll !== x) {
+      setStickPosition({ pitch: -y, roll: x });
+    }
+  };
+  const onRightStickEnd = () => {
+    if (pitch !== 0 || roll !== 0) {
+      setStickPosition({ pitch: 0, roll: 0 });
+    }
+  };
+
   return (
     <React.Fragment>
       <Grid
@@ -60,7 +54,12 @@ export default () => {
         <Grid item>Grid 1.2</Grid>
       </Grid>
       {/* Joystick render */}
-      <JoyStickContainer />
+      <JoystickContainer
+        onLeftStickMove={useCallback(onLeftStickMove, [])}
+        onLeftStickEnd={useCallback(onLeftStickEnd, [])}
+        onRightStickMove={useCallback(onRightStickMove, [])}
+        onRightStickEnd={useCallback(onRightStickEnd, [])}
+      />
 
       <Grid
         container
@@ -80,3 +79,6 @@ export default () => {
     </React.Fragment>
   );
 };
+HomeScreen.whyDidYouRender = true;
+
+export default memo(HomeScreen);
