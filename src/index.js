@@ -9,6 +9,11 @@ import withAppContext from "./common/AppContextHOC";
 import { useApp } from "./context/App";
 import GlobalStyle from "./common/GlobalStyle";
 
+if (process.env.NODE_ENV !== "production") {
+  const { whyDidYouUpdate } = require("why-did-you-update");
+  whyDidYouUpdate(React);
+}
+
 const App = () => {
   // Use Application Context
   const { setIsLandscape } = useApp();
