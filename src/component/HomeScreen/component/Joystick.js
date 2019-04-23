@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { ColorPalette } from "../../../common/Theme";
 
 const nipplejs = window.nipplejs;
@@ -14,25 +13,23 @@ const getNippleSize = () => {
   return width * 0.25;
 };
 
-export default ({ containerId, options, onMove, onEnd }) => {
-  useEffect(() => {
-    const defaultOptions = {
-      zone: document.getElementById(containerId),
-      mode: "static",
-      color: ColorPalette.main.secondary,
-      position: { left: "50%", top: "50%" },
-      size: getNippleSize(),
-      shape: "square"
-    };
+const injectJoystick = ({ containerId, options, onMove, onEnd }) => {
+  const defaultOptions = {
+    zone: document.getElementById(containerId),
+    mode: "static",
+    color: ColorPalette.main.secondary,
+    position: { left: "50%", top: "50%" },
+    size: getNippleSize(),
+    shape: "square"
+  };
 
-    const stick = nipplejs.create({ ...defaultOptions, ...options });
+  const stick = nipplejs.create({ ...defaultOptions, ...options });
 
-    onMove &&
-      stick.on("move", (event, data) => {
-        onMove(data.instance.frontPosition);
-      });
-    onEnd && stick.on("end", () => onEnd());
-  }, []);
-
-  return null;
+  onMove &&
+    stick.on("move", (event, data) => {
+      onMove(data.instance.frontPosition);
+    });
+  onEnd && stick.on("end", () => onEnd());
 };
+
+export default injectJoystick;
