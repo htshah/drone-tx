@@ -1,4 +1,10 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useCallback
+} from "react";
 
 const Context = React.createContext();
 
@@ -29,14 +35,14 @@ const AppProvider = props => {
     <Context.Provider
       value={{
         isLandscape,
-        setIsLandscape: flag => setIsLandscape(flag),
+        setIsLandscape: useCallback(flag => setIsLandscape(flag), []),
         stickPosition,
-        setStickPosition: position => {
+        setStickPosition: useCallback(position => {
           setStickPosition({
             ...stickPositionRef.current,
             ...position
           });
-        },
+        }, []),
         isConnected,
         setConnected
       }}
