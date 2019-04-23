@@ -26,6 +26,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "why-did-you-update": "^1.0.6"
+    "@welldone-software/why-did-you-render": "^3.0.6"
   }
 }

@@ -10,8 +10,8 @@ import { useApp } from "./context/App";
 import GlobalStyle from "./common/GlobalStyle";
 
 if (process.env.NODE_ENV !== "production") {
-  const { whyDidYouUpdate } = require("why-did-you-update");
-  whyDidYouUpdate(React);
+  const whyDidYouRender = require("@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js");
+  whyDidYouRender(React);
 }
 
 const App = () => {
