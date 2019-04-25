@@ -30,6 +30,8 @@ const injectJoystick = ({ containerId, options, onMove, onEnd }) => {
       onMove(data.instance.frontPosition);
     });
   onEnd && stick.on("end", () => onEnd());
+
+  return stick;
 };
 
 export default injectJoystick;
