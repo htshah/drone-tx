@@ -17,32 +17,11 @@ const AppProvider = props => {
     window.matchMedia("(orientation: landscape)").matches
   );
 
-  /* StickPosition state */
-  const [stickPosition, setStickPosition] = useState({
-    yaw: 0,
-    pitch: 0,
-    roll: 0,
-    throttle: 1000
-  });
-
-  let stickPositionRef = useRef(stickPosition);
-
-  useEffect(() => {
-    stickPositionRef.current = stickPosition;
-  });
-
   return (
     <Context.Provider
       value={{
         isLandscape,
         setIsLandscape: useCallback(flag => setIsLandscape(flag), []),
-        stickPosition,
-        setStickPosition: useCallback(position => {
-          setStickPosition({
-            ...stickPositionRef.current,
-            ...position
-          });
-        }, []),
         isConnected,
         setConnected
       }}
