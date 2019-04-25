@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useState,
-  useRef,
-  useEffect,
-  useCallback
-} from "react";
+import React, { useContext, useState, useCallback } from "react";
 
 const Context = React.createContext();
 

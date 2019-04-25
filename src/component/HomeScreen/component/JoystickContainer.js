@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from "react";
+import React, { memo, useLayoutEffect } from "react";
 import styled from "styled-components";
 
 import injectJoystick from "./Joystick";
@@ -20,7 +20,7 @@ const JoyStickContainer = ({
   onRightStickMove,
   onRightStickEnd
 }) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     //Render leftJoystick
     injectJoystick({
       containerId: "left-stick",
