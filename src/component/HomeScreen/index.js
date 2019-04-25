@@ -1,44 +1,35 @@
-import React, { useCallback, memo } from "react";
+import React, { useCallback, memo, useRef } from "react";
 import { Grid, Button } from "@material-ui/core";
 
 import { useApp } from "../../context/App";
 import JoystickContainer from "./component/JoystickContainer";
 
 const HomeScreen = () => {
-  const {
-    isConnected,
-    setConnected,
-    stickPosition: { yaw, pitch, roll, throttle },
-    setStickPosition
-  } = useApp();
+  const { isConnected, setConnected } = useApp();
+
+  const stickPositionRef = useRef({
+    throttle: 0,
+    yaw: 0,
+    pitch: 0,
+    roll: 0
+  });
+
+  const setStickPosition = newPosition => {
+    stickPositionRef.current = { ...stickPositionRef.current, ...newPosition };
+  };
 
   const handleConnection = () => {
     // alert(isConnected ? "Disconnecting" : "Connecting");
     setConnected(!isConnected);
   };
 
-  const onLeftStickMove = ({ x, y }) => {
-    if (throttle !== -y || yaw !== x) {
-      setStickPosition({ throttle: -y, yaw: x });
-    }
-  };
-  const onLeftStickEnd = () => {
-    if (yaw !== 0) {
-      setStickPosition({ yaw: 0 });
-    }
-  };
+  const onLeftStickMove = ({ x, y }) =>
+    setStickPosition({ throttle: -y, yaw: x });
+  const onLeftStickEnd = () => setStickPosition({ yaw: 0 });
 
-  const onRightStickMove = ({ x, y }) => {
-    if (pitch !== -y || roll !== x) {
-      setStickPosition({ pitch: -y, roll: x });
-    }
-  };
-  const onRightStickEnd = () => {
-    if (pitch !== 0 || roll !== 0) {
-      setStickPosition({ pitch: 0, roll: 0 });
-    }
-  };
-
+  const onRightStickMove = ({ x, y }) =>
+    setStickPosition({ pitch: -y, roll: x });
+  const onRightStickEnd = () => setStickPosition({ pitch: 0, roll: 0 });
   return (
     <React.Fragment>
       <Grid
