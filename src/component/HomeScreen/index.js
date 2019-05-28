@@ -1,8 +1,8 @@
-import React, { useCallback, memo, useRef } from "react";
-import { Grid, Button } from "@material-ui/core";
+import React, { useCallback, memo, useRef } from 'react';
+import { Grid, Button } from '@material-ui/core';
 
-import { useApp } from "../../context/App";
-import JoystickContainer from "./component/JoystickContainer";
+import { useApp } from '../../context/App';
+import JoystickContainer from './component/JoystickContainer';
 
 const HomeScreen = () => {
   const { isConnected, setConnected } = useApp();
@@ -14,12 +14,11 @@ const HomeScreen = () => {
     roll: 0
   });
 
-  const setStickPosition = newPosition => {
+  const setStickPosition = (newPosition) => {
     stickPositionRef.current = { ...stickPositionRef.current, ...newPosition };
   };
 
   const handleConnection = () => {
-    // alert(isConnected ? "Disconnecting" : "Connecting");
     setConnected(!isConnected);
   };
 
@@ -34,12 +33,12 @@ const HomeScreen = () => {
     <React.Fragment>
       <Grid
         container
-        direction="column"
-        justify="space-between"
-        alignItems="stretch"
-        style={{ height: "40%" }}
+        direction='column'
+        justify='space-between'
+        alignItems='stretch'
+        style={{ height: '40%' }}
       >
-        <Grid item style={{ height: "30px" }}>
+        <Grid item style={{ height: '30px' }}>
           Grid 1.1
         </Grid>
         <Grid item>Grid 1.2</Grid>
@@ -54,16 +53,16 @@ const HomeScreen = () => {
 
       <Grid
         container
-        justify="center"
-        style={{ height: "20%", padding: "10px 0" }}
+        justify='center'
+        style={{ height: '20%', padding: '10px 0' }}
       >
         <Grid item>
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             onClick={handleConnection}
           >
-            {!isConnected ? "Connect" : "Disconnect"}
+            {isConnected === false ? 'Connect' : 'Disconnect'}
           </Button>
         </Grid>
       </Grid>

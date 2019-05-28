@@ -1,7 +1,7 @@
-import React, { memo, useLayoutEffect } from "react";
-import styled from "styled-components";
+import React, { memo, useLayoutEffect } from 'react';
+import styled from 'styled-components';
 
-import injectJoystick from "./Joystick";
+import injectJoystick from './Joystick';
 
 const StickContainerWrapper = styled.div`
   width: 100%;
@@ -23,7 +23,7 @@ const JoyStickContainer = ({
   useLayoutEffect(() => {
     //Render leftJoystick
     injectJoystick({
-      containerId: "left-stick",
+      containerId: 'left-stick',
       options: { resetY: false },
       onMove: onLeftStickMove,
       onEnd: onLeftStickEnd
@@ -31,7 +31,7 @@ const JoyStickContainer = ({
 
     //Render rightJoystick
     injectJoystick({
-      containerId: "right-stick",
+      containerId: 'right-stick',
       onMove: onRightStickMove,
       onEnd: onRightStickEnd
     });
@@ -39,8 +39,8 @@ const JoyStickContainer = ({
 
   return (
     <StickContainerWrapper>
-      <StickContainer id="left-stick" />
-      <StickContainer id="right-stick" />
+      <StickContainer id='left-stick' />
+      <StickContainer id='right-stick' />
     </StickContainerWrapper>
   );
 };

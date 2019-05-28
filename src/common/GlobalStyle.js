@@ -1,6 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+    /* Disable dbl-tap zoom */
+    html{
+        touch-action: manipulation;
+    }
     html,body{
         margin: 0;
         background: #FFFFFF;

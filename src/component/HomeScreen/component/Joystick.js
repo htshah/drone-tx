@@ -1,4 +1,4 @@
-import { ColorPalette } from "../../../common/Theme";
+import { ColorPalette } from '../../../common/Theme';
 
 const nipplejs = window.nipplejs;
 
@@ -16,20 +16,20 @@ const getNippleSize = () => {
 const injectJoystick = ({ containerId, options, onMove, onEnd }) => {
   const defaultOptions = {
     zone: document.getElementById(containerId),
-    mode: "static",
+    mode: 'static',
     color: ColorPalette.main.secondary,
-    position: { left: "50%", top: "50%" },
+    position: { left: '50%', top: '50%' },
     size: getNippleSize(),
-    shape: "square"
+    shape: 'square'
   };
 
   const stick = nipplejs.create({ ...defaultOptions, ...options });
 
   onMove &&
-    stick.on("move", (event, data) => {
+    stick.on('move', (event, data) => {
       onMove(data.instance.frontPosition);
     });
-  onEnd && stick.on("end", () => onEnd());
+  onEnd && stick.on('end', () => onEnd());
 
   return stick;
 };
