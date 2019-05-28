@@ -19,7 +19,7 @@
     "format:prettier": "node_modules/.bin/prettier --config .prettierrc \"src/**/*.{ts,css,less,js}\" --write",
     "lint": "npm run lint:js",
     "lint:js": "./node_modules/.bin/eslint src/**/*.js --fix",
-    "precommit": "pretty-quick --staged && ./node_modules/.bin/lint-staged"
+    "precommit": "pretty-quick --staged && lint-staged"
   },
   "eslintConfig": {
     "extends": "react-app"
