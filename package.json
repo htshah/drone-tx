@@ -21,6 +21,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -29,6 +34,8 @@
   ],
   "devDependencies": {
     "@welldone-software/why-did-you-render": "^3.0.6",
-    "prettier": "^1.17.1"
+    "husky": "^2.3.0",
+    "prettier": "1.17.1",
+    "pretty-quick": "^1.11.0"
   }
 }
