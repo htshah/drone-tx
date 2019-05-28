@@ -19,6 +19,7 @@
     "format:prettier": "node_modules/.bin/prettier --config .prettierrc \"src/**/*.{ts,css,less,js}\" --write",
     "lint": "npm run lint:js",
     "lint:js": "./node_modules/.bin/eslint src/**/*.js --fix",
+    "lint:staged": "./node_modules/.bin/eslint --fix",
     "precommit": "pretty-quick --staged && lint-staged"
   },
   "eslintConfig": {
