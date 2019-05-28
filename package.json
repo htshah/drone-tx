@@ -18,15 +18,22 @@
     "format": "npm run format:prettier",
     "format:prettier": "node_modules/.bin/prettier --config .prettierrc \"src/**/*.{ts,css,less,js}\" --write",
     "lint": "npm run lint:js",
-    "lint:js": "eslint src/**/*.js src/**/*.jsx"
+    "lint:js": "./node_modules/.bin/eslint src/**/*.js --fix",
+    "precommit": "pretty-quick --staged && ./node_modules/.bin/lint-staged"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged && npm run lint"
+      "pre-commit": "npm run precommit"
     }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "browserslist": [
     ">0.2%",
@@ -42,6 +49,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
     "prettier": "1.17.1",
     "pretty-quick": "^1.11.0"
   }
