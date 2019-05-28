@@ -22,9 +22,6 @@
     "lint:staged": "./node_modules/.bin/eslint --fix",
     "precommit": "pretty-quick --staged && lint-staged"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run precommit"
