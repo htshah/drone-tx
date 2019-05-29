@@ -1,5 +1,6 @@
 import React, { memo, useLayoutEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import injectJoystick from './Joystick';
 
@@ -21,7 +22,7 @@ const JoyStickContainer = ({
   onRightStickEnd
 }) => {
   useLayoutEffect(() => {
-    //Render leftJoystick
+    // Render leftJoystick
     injectJoystick({
       containerId: 'left-stick',
       options: { resetY: false },
@@ -29,7 +30,7 @@ const JoyStickContainer = ({
       onEnd: onLeftStickEnd
     });
 
-    //Render rightJoystick
+    // Render rightJoystick
     injectJoystick({
       containerId: 'right-stick',
       onMove: onRightStickMove,
@@ -43,6 +44,12 @@ const JoyStickContainer = ({
       <StickContainer id='right-stick' />
     </StickContainerWrapper>
   );
+};
+JoyStickContainer.propTypes = {
+  onLeftStickMove: PropTypes.func.isRequired,
+  onLeftStickEnd: PropTypes.func.isRequired,
+  onRightStickMove: PropTypes.func.isRequired,
+  onRightStickEnd: PropTypes.func.isRequired
 };
 JoyStickContainer.whyDidYouRender = true;
 

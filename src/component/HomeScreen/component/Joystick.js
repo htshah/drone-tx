@@ -1,13 +1,13 @@
 import { ColorPalette } from '../../../common/Theme';
 
-const nipplejs = window.nipplejs;
+const { nipplejs } = window;
 
 const getNippleSize = () => {
-  //Use screen's width if in landscape
-  var width = window.innerWidth;
+  // Use screen's width if in landscape
+  let width = window.innerWidth;
 
   if (Math.abs(window.orientation) !== 90) {
-    //Use screen's height if in potrait
+    // Use screen's height if in potrait
     width = window.screen.height;
   }
   return width * 0.25;
@@ -25,11 +25,19 @@ const injectJoystick = ({ containerId, options, onMove, onEnd }) => {
 
   const stick = nipplejs.create({ ...defaultOptions, ...options });
 
-  onMove &&
-    stick.on('move', (event, data) => {
-      onMove(data.instance.frontPosition);
-    });
-  onEnd && stick.on('end', () => onEnd());
+  if (typeof onMove === 'undefined' || typeof onEnd === 'undefined') {
+    const errorString = 'injectJoystick: onEnd or onMove not provided';
+    if (process.env.NODE_ENV !== 'production') {
+      throw new Error(errorString);
+    } else {
+      console.error(errorString);
+    }
+  }
+
+  stick.on('move', (event, data) => {
+    onMove(data.instance.frontPosition);
+  });
+  stick.on('end', () => onEnd());
 
   return stick;
 };

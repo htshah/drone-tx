@@ -1,8 +1,9 @@
 import React, { useContext, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 
 const Context = React.createContext();
 
-const AppProvider = (props) => {
+const AppProvider = ({ children }) => {
   /* Connection state */
   const [isConnected, setConnected] = useState(false);
 
@@ -20,9 +21,13 @@ const AppProvider = (props) => {
         setConnected
       }}
     >
-      {props.children}
+      {children}
     </Context.Provider>
   );
+};
+
+AppProvider.propTypes = {
+  children: PropTypes.element.isRequired
 };
 
 const useApp = () => useContext(Context);
