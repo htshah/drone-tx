@@ -22,6 +22,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    "no-console": "warn"
+    "no-console": ["warn", { "allow": ["error"] }]
   }
 }
