@@ -15,6 +15,7 @@ import GlobalStyle from './common/GlobalStyle';
 } */
 
 
+
 const App = () => {
   // Use Application Context
   const { setIsLandscape } = useApp();
