@@ -14,6 +14,8 @@ import GlobalStyle from './common/GlobalStyle';
   whyDidYouRender(React);
 } */
 
+
+
 const App = () => {
   // Use Application Context
   const { setIsLandscape } = useApp();
