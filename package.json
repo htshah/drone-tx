@@ -31,8 +31,8 @@
     ]
   },
   "browserslist": [
-    "default",
-    "not ie"
+    "defaults",
+    "not ie <= 11"
   ],
   "devDependencies": {
     "@welldone-software/why-did-you-render": "^6.1.4",
