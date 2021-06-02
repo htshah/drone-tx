@@ -20,7 +20,7 @@ const injectJoystick = ({ containerId, options, onMove, onEnd }) => {
     color: ColorPalette.main.secondary,
     position: { left: '50%', top: '50%' },
     size: getNippleSize(),
-    shape: 'square'
+    shape: 'square',
   };
 
   const stick = nipplejs.create({ ...defaultOptions, ...options });

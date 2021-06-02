@@ -19,7 +19,7 @@ const JoyStickContainer = ({
   onLeftStickMove,
   onLeftStickEnd,
   onRightStickMove,
-  onRightStickEnd
+  onRightStickEnd,
 }) => {
   useLayoutEffect(() => {
     // Render leftJoystick
@@ -27,14 +27,14 @@ const JoyStickContainer = ({
       containerId: 'left-stick',
       options: { resetY: false },
       onMove: onLeftStickMove,
-      onEnd: onLeftStickEnd
+      onEnd: onLeftStickEnd,
     });
 
     // Render rightJoystick
     injectJoystick({
       containerId: 'right-stick',
       onMove: onRightStickMove,
-      onEnd: onRightStickEnd
+      onEnd: onRightStickEnd,
     });
   }, []);
 
@@ -49,7 +49,7 @@ JoyStickContainer.propTypes = {
   onLeftStickMove: PropTypes.func.isRequired,
   onLeftStickEnd: PropTypes.func.isRequired,
   onRightStickMove: PropTypes.func.isRequired,
-  onRightStickEnd: PropTypes.func.isRequired
+  onRightStickEnd: PropTypes.func.isRequired,
 };
 JoyStickContainer.whyDidYouRender = true;
 
