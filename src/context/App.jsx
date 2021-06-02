@@ -1,24 +1,38 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { isIOS } from 'react-device-detect';
 
 const Context = React.createContext();
+
+const isLandscapeView = () =>
+  window.matchMedia('(orientation: landscape)').matches;
 
 const AppProvider = ({ children }) => {
   /* Connection state */
   const [isConnected, setConnected] = useState(false);
 
   /* Orientation state */
-  const [isLandscape, setIsLandscape] = useState(
-    window.matchMedia('(orientation: landscape)').matches
-  );
+  const [isLandscape, setIsLandscape] = useState(isLandscapeView());
+  const setOrientation = useCallback(() => setIsLandscape(isLandscapeView()));
+
+  // Handle Orientation change specially for iOS devices as they don't
+  // lock the orientation for PWA.
+  if (isIOS) {
+    useEffect(() => {
+      window.addEventListener('orientationchange', setOrientation);
+
+      return () => {
+        window.removeEventListener('orientationchange', setOrientation);
+      };
+    }, []);
+  }
 
   return (
     <Context.Provider
       value={{
         isLandscape,
-        setIsLandscape: useCallback((flag) => setIsLandscape(flag), []),
         isConnected,
-        setConnected
+        setConnected,
       }}
     >
       {children}
@@ -27,10 +41,10 @@ const AppProvider = ({ children }) => {
 };
 
 AppProvider.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 
-const useApp = () => useContext(Context);
+const useAppContext = () => useContext(Context);
 const AppConsumer = Context.Consumer;
 export default Context;
-export { AppProvider, AppConsumer, useApp };
+export { AppProvider, AppConsumer, useAppContext };
