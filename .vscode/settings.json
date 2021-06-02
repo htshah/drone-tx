@@ -9,7 +9,6 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.snippetSuggestions": "top",
-  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.rulers": [100],
   "breadcrumbs.enabled": true,
@@ -47,12 +46,4 @@
   "emmet.syntaxProfiles": {
     "javascript": "javascriptreact"
   },
-  "indentRainbow.colors": [
-    "rgba(32,64,32,0.3)",
-    "rgba(64,32,64,0.3)",
-    "rgba(16,48,48,0.3)",
-    "rgba(64,64,16,0.3)"
-  ],
-  "cSpell.userWords": ["netlify", "het", "shah", "droneTx"],
-  "cSpell.words": ["travelmode", "formik"]
 }
