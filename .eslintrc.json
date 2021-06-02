@@ -18,7 +18,8 @@
   "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
+    "no-console": ["warn", { "allow": ["error"] }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-console": ["warn", { "allow": ["error"] }]
+    "react/react-in-jsx-scope": "off"
   }
 }
